@@ -3,7 +3,7 @@ services:
     build:
       context: ./web
       dockerfile: apache&&laravel.Dockerfile
-    container_name: apache&&laravel_webserver
+    container_name: apacheLaravel_webserver
     ports:
       - "80:80"
     volumes:
@@ -28,16 +28,19 @@ services:
       - backend
   cliente:
     build:
-      context: ./cliente
+      context: ./react
       dockerfile: react.Dockerfile
     container_name: react_app
     ports:
       - "3000:3000"
-    volumes:
-      - ./cliente:/app
+    #volumes:
+    #  - ./react:/app
     networks:
       - frontend
 
 networks:
   backend:
   frontend:
+
+volumes:
+  mariadb_data:
