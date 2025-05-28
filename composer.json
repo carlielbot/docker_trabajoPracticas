@@ -1,0 +1,5 @@
+{
+    "require": {
+        "api_consultas/vendor/fruitcake/laravel-cors": "^3.0"
+    }
+}
