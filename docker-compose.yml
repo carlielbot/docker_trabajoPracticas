@@ -30,7 +30,7 @@ services:
     ports:
       - "3000:3000"
     #volumes:
-    #  - ./react:/app
+    #  - ./react:/app <-- if i uncomment this line, the react app will not work, because it will not be able to find the node_modules due to overriding the /app directory
     networks:
       - frontend
 
