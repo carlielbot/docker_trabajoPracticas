@@ -1,0 +1,51 @@
+
+services:
+  apache:  
+    build:
+      context: ./laravel
+      dockerfile: ../apache.Dockerfile
+    container_name: apache_server
+    ports:
+      - "80:80"
+    volumes:
+      - ./laravel:/var/www/html
+      - ./apache/000-default.conf:/etc/apache2/sites-available/000-default.conf
+    networks:
+      - backend
+      - frontend
+  api:
+    build:
+      context: ./api
+      dockerfile: ../Dockerfile
+    container_name: laravel_app
+    volumes:
+      - ./api:/var/www/html
+    networks:
+      - backend
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb_server
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: apiStatistics
+      MYSQL_USER: laravel_user
+      MYSQL_PASSWORD: laravel_password
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - backend
+  cliente:
+    build:
+      context: ./cliente
+      dockerfile: ../react.Dockerfile
+    container_name: react_app
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./cliente:/app
+    networks:
+      - frontend
+
+networks:
+  backend:
+  frontend:
