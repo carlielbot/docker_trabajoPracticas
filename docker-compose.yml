@@ -4,8 +4,6 @@ services:
       context: ./web
       dockerfile: apache&&laravel.Dockerfile
     container_name: apacheLaravel_webserver
-    ports:
-      - "80:80"
     volumes:
       - ./web:/var/www/html
       - ./web/000-default.conf:/etc/apache2/sites-available/000-default.conf
@@ -15,8 +13,6 @@ services:
   mariadb:
     image: mariadb:latest
     container_name: mariadb_server
-    ports:
-      - "3306:3306"
     environment:
       MYSQL_ROOT_PASSWORD: root_password
       MYSQL_DATABASE: apiStatistics
