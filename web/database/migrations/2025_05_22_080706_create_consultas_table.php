@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('tipoConsulta');
             $table->string('paramUsado');
             $table->dateTime('fechaHora');
-            $table->string('ip');
+            $table->string('ip')->default('');
             $table->timestamps();
         });
     }

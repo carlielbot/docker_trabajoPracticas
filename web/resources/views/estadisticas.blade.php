@@ -70,6 +70,7 @@
         </div>
     </div>
     <a href="/" >Volver al login</a>
+    <a href="http://localhost:3000/">Volver al inicio</a>
 </div>
 </body>
 </html>

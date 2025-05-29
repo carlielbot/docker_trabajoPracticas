@@ -20,7 +20,7 @@ function App() {
             <br/><br/>
             <header>
                 <button onClick={() => consultasInstance.toggle('pestana')}>Filtros</button>
-                <a href="http://127.0.0.1:8000/" className="btn">Ver estadisticas</a>
+                <a href="http://localhost/" className="btn">Ver estadisticas</a>
                 <br/><br/>
                 <div className="App" id='pestana'>
                     <button onClick={() => consultasInstance.consulta('all', setResultado)}>Consultar todos los países

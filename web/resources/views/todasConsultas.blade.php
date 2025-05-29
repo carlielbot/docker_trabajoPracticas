@@ -37,7 +37,8 @@
             </tbody>
         </table>
     </div><br>
-    <a href="http://localhost:3000/">Volver a la página principal</a>
+    <a href="/" >Volver al login</a>
+    <a href="http://localhost:3000/">Volver al inicio</a>
 </div>
 </body>
 </html>

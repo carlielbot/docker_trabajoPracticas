@@ -1,4 +1,3 @@
-import React from 'react';
 import axios from 'axios';
 
 export class Consultas {
@@ -29,12 +28,7 @@ export class Consultas {
 
     async enviarDatos (datos) {
         try {
-            const respuesta = await axios.post('http://127.0.0.1:8000/api/consultas', datos, {
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                }
-            });
+            const respuesta = await axios.post('http://localhost/api/consultas', datos);
 
             if (respuesta.status === 200) {
                 console.log('Datos enviados exitosamente');
