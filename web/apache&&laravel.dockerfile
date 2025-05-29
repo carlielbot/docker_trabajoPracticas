@@ -18,6 +18,8 @@ RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/lo
 
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
+RUN docker-php-ext-install opcache
+
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
