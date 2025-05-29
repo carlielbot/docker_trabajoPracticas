@@ -24,7 +24,7 @@ h2 {
     margin-bottom: 20px;
 }
 
-.estadisticas-grid {
+.statistics-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
@@ -81,6 +81,7 @@ button:hover {
     background-color: #665c41;
     transform: scale(1.05);
 }
+
 input, select {
     background-color: #403a36;
     color: aliceblue;
@@ -91,6 +92,7 @@ input, select {
     font-size: 14px;
     width: 200px;
 }
+
 .btn {
     background-color: #6e5c40;
     color: white;
@@ -113,7 +115,8 @@ input, select {
     background-color: #665c41;
     transform: scale(0.95);
 }
-a{
+
+a {
     color: white;
 }
 

@@ -1,94 +1,93 @@
 import './App.css';
-import {Consultas} from './Consultas';
-import {Filtros} from './Filtros';
-import React, {useState} from 'react';
+import {Queries} from './Query';
+import {Filters} from './Filter';
+import {useState} from 'react';
 
 function App() {
-    const consultasInstance = Consultas.getInstance();
-    const filtrosInstance = Filtros.getInstance();
+    const queryInstance = Queries.getInstance();
+    const filterInstance = Filters.getInstance();
 
-    const [resultado, setResultado] = useState([]);
+    const [result, setResult] = useState([]);
     const [region, setRegion] = useState("");
-    const [idioma, setIdioma] = useState("");
-    const [minimo, setMinimo] = useState("");
-    const [maximo, setMaximo] = useState("");
-    const [pais, setPais] = useState("");
+    const [language, setLanguage] = useState("");
+    const [minimum, setMinimum] = useState("");
+    const [maximum, setMaximum] = useState("");
+    const [country, setCountry] = useState("");
 
     return (
         <div className="app-container">
             <h1>Consultas API REST</h1>
             <br/><br/>
             <header>
-                <button onClick={() => consultasInstance.toggle('pestana')}>Filtros</button>
-                <a href="http://localhost/" className="btn">Ver estadisticas</a>
+                <button onClick={() => queryInstance.toggle('tab')}>Filters</button>
+                <a href="http://localhost/" className="btn">See statistics</a>
                 <br/><br/>
-                <div className="App" id='pestana'>
-                    <button onClick={() => consultasInstance.consulta('all', setResultado)}>Consultar todos los países
-                    </button>
+                <div className="App" id='tab'>
+                    <button onClick={() => queryInstance.query('all', setResult)}>Consult all countries</button>
                     <br/><br/>
 
-                    <button onClick={() => consultasInstance.toggle('region')}>Filtrar por Región</button>
+                    <button onClick={() => queryInstance.toggle('region')}>Filter by region</button>
                     <br/><br/>
                     <div id='region' style={{display: 'none'}}>
                         <select
                             value={region}
                             onChange={(e) => setRegion(e.target.value)}
                         >
-                            <option value="">Seleccionar una región</option>
+                            <option value="">Select a region</option>
                             <option value="asia">Asia</option>
-                            <option value="europe">Europa</option>
-                            <option value="africa">África</option>
-                            <option value="americas">Américas</option>
-                            <option value="oceania">Oceanía</option>
+                            <option value="europe">Europe</option>
+                            <option value="africa">Africa</option>
+                            <option value="americas">America</option>
+                            <option value="oceania">Oceania</option>
                         </select>
-                        <button onClick={() => filtrosInstance.filtrarRegion(region, setResultado)}>
-                            Buscar
+                        <button onClick={() => filterInstance.filterByRegion(region, setResult)}>
+                            Search
                         </button>
                     </div>
 
-                    <button onClick={() => consultasInstance.toggle('idioma')}>Filtrar por idioma</button>
+                    <button onClick={() => queryInstance.toggle('language')}>Filter by language</button>
                     <br/><br/>
-                    <div id='idioma' style={{display: 'none'}}>
+                    <div id='language' style={{display: 'none'}}>
                         <input
                             type="text"
-                            value={idioma}
-                            onChange={(e) => setIdioma(e.target.value)}
-                            placeholder="Idioma (en inglés)"
+                            value={language}
+                            onChange={(e) => setLanguage(e.target.value)}
+                            placeholder="Language (e.g., 'spanish')"
                         />
-                        <button onClick={() => filtrosInstance.filtrarIdioma(idioma, setResultado)}>Buscar</button>
+                        <button onClick={() => filterInstance.filterByLanguage(language, setResult)}>Search</button>
                         <br/><br/>
                     </div>
 
-                    <button onClick={() => consultasInstance.toggle('minmax')}>Filtrar por poblacion</button>
+                    <button onClick={() => queryInstance.toggle('minmax')}>Filter by population</button>
                     <br/><br/>
                     <div id='minmax' style={{display: 'none'}}>
                         <input
                             type="number"
-                            value={minimo}
-                            onChange={(e) => setMinimo(e.target.value)}
-                            placeholder="Población mínima"
+                            value={minimum}
+                            onChange={(e) => setMinimum(e.target.value)}
+                            placeholder="Minimum population"
                         />
                         <input
                             type="number"
-                            value={maximo}
-                            onChange={(e) => setMaximo(e.target.value)}
-                            placeholder="Población máxima"
+                            value={maximum}
+                            onChange={(e) => setMaximum(e.target.value)}
+                            placeholder="Maximum population"
                         />
-                        <button onClick={() => filtrosInstance.filtrarMinimo(minimo, maximo, setResultado)}>Buscar
+                        <button onClick={() => filterInstance.filterByPopulationRange(minimum, maximum, setResult)}>Search
                         </button>
                         <br/><br/>
                     </div>
 
-                    <button onClick={() => consultasInstance.toggle('nombre')}>Filtrar por nombre del país</button>
+                    <button onClick={() => queryInstance.toggle('name')}>Filter by country name</button>
                     <br/><br/>
-                    <div id='nombre' style={{display: 'none'}}>
+                    <div id='name' style={{display: 'none'}}>
                         <input
                             type="text"
-                            value={pais}
-                            onChange={(e) => setPais(e.target.value)}
-                            placeholder="Nombre del país"
+                            value={country}
+                            onChange={(e) => setCountry(e.target.value)}
+                            placeholder="Country name"
                         />
-                        <button onClick={() => filtrosInstance.filtrarPais(pais, setResultado)}>Buscar</button>
+                        <button onClick={() => filterInstance.filterByCountry(country, setResult)}>Search</button>
                         <br/><br/>
                     </div>
 
@@ -97,8 +96,8 @@ function App() {
             </header>
             <main>
                 <div>
-                    <h2>Resultados</h2>
-                    {consultasInstance.cargarPaises(resultado)}
+                    <h2>Results</h2>
+                    {queryInstance.renderCountries(result)}
                 </div>
             </main>
         </div>

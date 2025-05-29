@@ -1,17 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\getConsultas;
-use App\Http\Controllers\controladorInicioSesion;
-use App\Http\Controllers\postController;
+use App\Http\Controllers\getQueriesController;
+use App\Http\Controllers\loginController;
+use App\Http\Controllers\postQueriesController;
 
-//FUNCIONALIDAD GET
-Route::get('/consultas', [getConsultas::class, 'getAllConsultas']);
+// GET FUNCTIONALITY
+Route::get('/queries', [GetQueriesController::class, 'getAllQueries']);
 
-//ESTADÍSTICAS VIEW Y VERIFICAR EL LOGIN
-Route::get('/', [controladorInicioSesion::class, 'mostrarLogin']) ->name('login');
-Route::post('/verificar-login', [controladorInicioSesion::class, 'verificarLogin'])->name('verificar.login');
+// STATISTICS VIEW AND LOGIN VERIFICATION
+Route::get('/', [LoginController::class, 'showLogin'])->name('login');
+Route::post('/verify-login', [LoginController::class, 'verifyLogin'])->name('verify.login');
 
-
-//FUNCIONALIDAD POST
-Route::post('/api/consultas', [postController::class, 'postConsulta']);
+// POST FUNCTIONALITY
+Route::post('/api/queries', [PostQueriesController::class, 'postQuery']);

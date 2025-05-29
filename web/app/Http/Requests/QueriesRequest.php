@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class consultasRequest extends FormRequest
+class QueriesRequest extends FormRequest
 {
     public function authorize()
     {
@@ -14,9 +14,10 @@ class consultasRequest extends FormRequest
     public function rules()
     {
         return [
-            'tipoConsulta' => 'required|string',
-            'paramUsado' => 'required|string',
-            'fechaHora' => 'required|string'
+            'queryType' => 'required|string',
+            'paramUsed' => 'required|string',
+            'dateTime' => 'required|string',
+            'ip' => 'required|string'
         ];
     }
 }

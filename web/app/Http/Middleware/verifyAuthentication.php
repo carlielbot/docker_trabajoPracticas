@@ -5,13 +5,13 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class VerificarAutenticacion
+class VerifyAuthentication
 {
     public function handle(Request $request, Closure $next)
     {
-        if (!session('autenticado')) {
+        if (!session('authenticated')) {
             return redirect()->route('login')
-                ->with('error', 'Por favor inicia sesión primero');
+                ->with('error', 'You must be logged in to access this page.');
         }
 
         return $next($request);

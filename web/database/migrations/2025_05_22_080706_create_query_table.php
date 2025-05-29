@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('consultas', function (Blueprint $table) {
+        Schema::create('queries', function (Blueprint $table) {
             $table->id();
-            $table->string('tipoConsulta');
-            $table->string('paramUsado');
-            $table->dateTime('fechaHora');
+            $table->string('queryType');
+            $table->string('paramUsed');
+            $table->dateTime('dateTime');
             $table->string('ip')->default('');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('consultas');
+        Schema::dropIfExists('queries');
     }
 };
