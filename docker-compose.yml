@@ -2,7 +2,7 @@ services:
   web:  
     build:
       context: ./web
-      dockerfile: apache&&laravel.Dockerfile
+      dockerfile: apache&&laravel.dockerfile
     container_name: apacheLaravel_webserver
     volumes:
       - ./web:/var/www/html
@@ -25,7 +25,7 @@ services:
   cliente:
     build:
       context: ./react
-      dockerfile: react.Dockerfile
+      dockerfile: react.dockerfile
     container_name: react_app
     ports:
       - "3000:3000"
