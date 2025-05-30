@@ -19,7 +19,7 @@ docker compose up -d
 ## Instalation - Using DockerHub repository
 
 - Entry the website: [https://hub.docker.com/search?q=cvl0703](https://hub.docker.com/search?q=cvl0703)
-- Pull all the repositories called: cvl0703/clientefidesol, cvl0703/servidorfidesol and cvl0703/basedatosmariadb.
+- Pull all the repositories called: `cvl0703/clientefidesol`, `cvl0703/servidorfidesol` and `cvl0703/basedatosmariadb`.
 - On the bash cmd use the `docker compose up -d` command.
 
 ## Use
