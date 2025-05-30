@@ -1,6 +1,6 @@
 # Intern proyect - Fidesol
 
-Proyect for the creation of a React.js client, php with Laravel framework and mariaDB database for the creation of statistical data generated from `restcountries.com`.
+Proyect for the creation of a React.js client, php with Laravel framework and mariaDB database for the creation of statistical data generated from `restcountries.com`. This version is on english, but didn't have the time to debug all the errors due to time limit.
 
 ## Requirements
 
