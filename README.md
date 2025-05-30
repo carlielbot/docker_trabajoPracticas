@@ -11,7 +11,7 @@ Proyect for the creation of a React.js client, php with Laravel framework and ma
 ## Instalation - Using GithHub repository
 
 ```bash
-git clone https://github.com/carlielbot/docker_trabajoPracticas.git
+git clone https://github.com/cvl0703/docker_trabajoPracticas.git
 cd docker_trabajoPracticas
 docker compose up -d
 ```
