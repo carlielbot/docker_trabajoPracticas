@@ -28,7 +28,7 @@ docker compose up -d
 
 Access the app on [http://localhost:3000](http://localhost:3000) (React)  
 Access the API on [http://localhost:80](http://localhost:80) (Laravel)  
-Access to the database on [http://localhost:3306](http://localhost:3306) (mariaDB) only if you have installed an aplication like DBeaber to visualice the database.
+Access to the database on [http://localhost:3306](http://localhost:3306) (mariaDB) only if you have installed an aplication like `DBeaber` to visualice the database.
 
 ## Structure
 
