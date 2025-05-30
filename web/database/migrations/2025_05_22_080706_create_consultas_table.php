@@ -3,7 +3,11 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+/**
+ * Migration to create the 'consultas' table.
+ * This table will store consultation data including type, parameters used,
+ * date and time of the consultation, and the IP address of the user.
+ */
 return new class extends Migration
 {
     /**

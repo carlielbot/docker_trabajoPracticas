@@ -1,10 +1,16 @@
 import { Consultas } from "./Consultas.js";
 import axios from 'axios';
-
+/**
+ * Filtros is a singleton class that provides methods to filter countries based on various criteria.
+ * It uses the Consultas class to perform API requests and handle the results.
+ */
 export class Filtros {
     static #instance = null;
     #consultasInstance;
-
+    /**
+     * Private constructor to enforce singleton pattern.
+     * Throws an error if an instance already exists.
+     */
     constructor() {
         if (Filtros.#instance !== null) {
             throw new Error("Filtros is a singleton class. Use Filtros.getInstance() to get the instance.");
@@ -12,14 +18,22 @@ export class Filtros {
         Filtros.#instance = this;
         this.#consultasInstance = Consultas.getInstance();
     }
-
+    /**
+     * Static method to get the singleton instance of Filtros.
+     * If the instance does not exist, it creates a new one.
+     * @returns {Filtros} The singleton instance of Filtros.
+     */
     static getInstance() {
         if (Filtros.#instance === null) {
             Filtros.#instance = new Filtros();
         }
         return Filtros.#instance;
     }
-
+    /**
+     * Filters countries by language.
+     * @param {string} idioma - The language to filter by.
+     * @param {function} actualizarResultado - Callback function to update the results.
+     */
     async filtrarIdioma(idioma, actualizarResultado) {
         if (!idioma) {
             alert("Por favor, ingrese un idioma en inglés.");
@@ -30,7 +44,12 @@ export class Filtros {
         this.#limpiarCampo("inputIdioma");
         this.#consultasInstance.toggle('idioma');
     }
-
+    /**
+     * Filters countries by population range.
+     * @param {number} min - Minimum population.
+     * @param {number} max - Maximum population.
+     * @param {function} actualizarResultado - Callback function to update the results.
+     */
     async filtrarMinimo(min, max, actualizarResultado) {
 
         if (isNaN(min) || isNaN(max) || min < 0 || max < min) {
@@ -39,7 +58,7 @@ export class Filtros {
         }
 
         try {
-            //hacemos la consulta a restcountries.com
+            //Make the request to the REST Countries API to get all countries.
             const url = `https://restcountries.com/v3.1/all`;
             const response = await fetch(url);
             if (!response.ok) {
@@ -57,7 +76,7 @@ export class Filtros {
 
             actualizarResultado(paisesFiltrados);
 
-            //creamos los datos a enviar a nuestro servidor de estadísticas.
+            //Create the data object to send to the server.
             const datos = {
                 tipoConsulta: 'con mínimo y máximo',
                 paramUsado: `por mínimo: ${min} y máximo: ${max}`,
@@ -65,7 +84,7 @@ export class Filtros {
                 ip: (await axios.get('https://api.ipify.org?format=json')).data.ip
             }
 
-            //enviamos los datos al servidor.
+            //Send the data to the server.
             await this.#consultasInstance.enviarDatos(datos);
 
 
@@ -75,7 +94,12 @@ export class Filtros {
             alert(error.message);
         }
     }
-
+    /**
+     * Filters countries by name.
+     * @param {string} pais - The name of the country to filter by.
+     * @param {function} actualizarResultado - Callback function to update the results.
+     * @throws {Error} If the country name is empty or if no country is found.
+     */
     async filtrarPais(pais, actualizarResultado) {
         if (!pais) {
             alert("Por favor, ingrese un país.");
@@ -86,7 +110,12 @@ export class Filtros {
         this.#limpiarCampo("input");
         this.#consultasInstance.toggle("nombre");
     }
-
+    /**
+     * Filters countries by region.
+     * @param {string} region - The region to filter by.
+     * @param {function} actualizarResultado - Callback function to update the results.
+     * @throws {Error} If the region is not selected.
+     */
     async filtrarRegion(region, actualizarResultado) {
         if (!region) {
             alert("Por favor, seleccione una región.");
@@ -96,7 +125,10 @@ export class Filtros {
         await this.#consultasInstance.consulta(`region/${region}`, actualizarResultado);
         this.#consultasInstance.toggle("region");
     }
-
+    /**
+     * Clears the input field with the given ID.
+     * @param {string} id - The ID of the input field to clear.
+     */
     #limpiarCampo(id) {
         const campo = document.getElementById(id);
         if (campo) {

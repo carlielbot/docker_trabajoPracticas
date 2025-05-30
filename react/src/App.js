@@ -1,9 +1,15 @@
 import './App.css';
 import {Consultas} from './Consultas';
 import {Filtros} from './Filtros';
-import React, {useState} from 'react';
-
+import {useState} from 'react';
+/**
+ * @returns The main application component that renders the UI for querying and filtering countries from a REST API.
+ */
 function App() {
+    /**
+     * Instances of Consultas and Filtros classes to handle API queries and filtering logic.
+     * These instances are created using the singleton pattern to ensure only one instance exists throughout the application.
+     */
     const consultasInstance = Consultas.getInstance();
     const filtrosInstance = Filtros.getInstance();
 
@@ -15,6 +21,10 @@ function App() {
     const [pais, setPais] = useState("");
 
     return (
+        /**
+         * Main application container that includes a header with buttons for querying and filtering countries,
+         * and a main section that displays the results of the queries.
+         */
         <div className="app-container">
             <h1>Consultas API REST</h1>
             <br/><br/>

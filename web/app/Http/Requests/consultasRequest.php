@@ -3,7 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+/**
+ * Request class for validating consultation data.
+ */
 class consultasRequest extends FormRequest
 {
     public function authorize()

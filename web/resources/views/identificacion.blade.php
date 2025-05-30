@@ -1,3 +1,4 @@
+<!-- View for the login. -->
 <!DOCTYPE html>
 <html lang="es">
 <head>

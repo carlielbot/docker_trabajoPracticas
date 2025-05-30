@@ -4,14 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Models\modeloJson;
 use Illuminate\Http\Request;
-
+/**
+ * Controller for handling user login and session management.
+ */
 class controladorInicioSesion extends Controller
 {
+    /**
+     * Display the login view.
+     *
+     * @return \Illuminate\View\View
+     */
     public function mostrarLogin()
     {
         return view('identificacion');
     }
-
+    
+    /**
+     * Handle the login request and redirect based on user role.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function verificarLogin(Request $request)
     {
         $usuario = $request->input('usuario');

@@ -1,3 +1,4 @@
+<!-- View for seeing all the post consultations to the database. -->
 <!DOCTYPE html>
 <html lang="es">
 <head>

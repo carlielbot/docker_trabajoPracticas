@@ -1,3 +1,4 @@
+<!-- View for the display of the statistical data. -->
 <!DOCTYPE html>
 <html lang="es">
 <head>

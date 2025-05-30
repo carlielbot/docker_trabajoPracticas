@@ -1,4 +1,7 @@
+# yml file for a Docker setup with Apache, Laravel, MariaDB, and React
 services:
+  # Apache and Laravel web server
+  # This service is used to serve the Laravel application
   web:  
     build:
       context: ./web
@@ -12,6 +15,8 @@ services:
       - frontend
     ports:
       - "80:80"
+  # MariaDB database server
+  # This service is used to store API statistics
   mariadb:
     image: mariadb:latest
     container_name: mariadb_server
@@ -20,10 +25,14 @@ services:
       MYSQL_DATABASE: apiStatistics
       MYSQL_USER: laravel_user
       MYSQL_PASSWORD: laravel_password
+    ports:
+      - "3306:3306"
     volumes:
       - mariadb_data:/var/lib/mysql
     networks:
       - backend
+  # React application
+  # This service is used to serve the React frontend
   cliente:
     build:
       context: ./react
@@ -32,7 +41,7 @@ services:
     ports:
       - "3000:3000"
     #volumes:
-    #  - ./react:/app <-- if i uncomment this line, the react app will not work, because it will not be able to find the node_modules due to overriding the /app directory
+    #  - ./react:/app <-- if uncommented, the react app will not work, it won't not be able to find the node_modules due to overriding the /app directory
     networks:
       - frontend
 
