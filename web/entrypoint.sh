@@ -5,6 +5,7 @@ if [ ! -d "vendor" ]; then
   composer install
 fi
 
+# Ajusta el archivo para que lleguen las peticiones a la API
 CSRF_FILE="vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php"
 if [ -f "$CSRF_FILE" ]; then
   sed -i 's/protected \$except.*/protected \$except = ["api\/*"];/' "$CSRF_FILE"
