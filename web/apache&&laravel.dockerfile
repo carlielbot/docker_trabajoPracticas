@@ -27,7 +27,8 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 RUN curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer
 
 # Install Laravel dependencies using Composer
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader \
+    && chown -R www-data:www-data vendor
 
 # Install additional PHP extensions required by Laravel
 RUN docker-php-ext-install opcache

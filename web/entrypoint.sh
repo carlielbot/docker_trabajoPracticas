@@ -1,20 +1,18 @@
 #!/bin/bash
 set -e
-
 # Instala dependencias si no existe vendor
 if [ ! -d "vendor" ]; then
   composer install
+fi
 
-  # Modifica la línea de $except en VerifyCsrfToken.php
-  sed -i "s|protected \$except = .*;|protected \$except = ['api/*'];|" vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php
-
+CSRF_FILE="vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/VerifyCsrfToken.php"
+if [ -f "$CSRF_FILE" ]; then
+  sed -i 's/protected \$except.*/protected \$except = ["api\/*"];/' "$CSRF_FILE"
 fi
 
 # Copia .env si no existe
 if [ ! -f ".env" ]; then
   cp .env.example .env
-
-
 fi
 
 # Espera a que la base de datos esté disponible
