@@ -15,12 +15,14 @@ git clone https://github.com/cvl0703/docker_trabajoPracticas.git
 cd docker_trabajoPracticas
 docker compose up -d
 ```
+- Wait until the API has installed all dependencies to use the app.
 
 ## Instalation - Using DockerHub repository
 
 - Entry the website: [https://hub.docker.com/search?q=cvl0703](https://hub.docker.com/search?q=cvl0703)
 - Pull all the repositories called: `cvl0703/clientefidesol`, `cvl0703/servidorfidesol` and `cvl0703/basedatosmariadb`.
 - On the bash cmd use the `docker compose up -d` command.
+- Wait until the API has installed all dependencies to use the app.
 
 ## Use
 
