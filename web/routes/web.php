@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\getQueriesController;
-use App\Http\Controllers\loginController;
-use App\Http\Controllers\postQueriesController;
+use App\Http\Controllers\GetQueriesController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PostQueriesController;
 
 // GET FUNCTIONALITY
 Route::get('/queries', [GetQueriesController::class, 'getAllQueries']);
