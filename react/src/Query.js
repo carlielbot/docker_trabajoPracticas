@@ -28,7 +28,12 @@ export class Queries {
 
     async sendData(data) {
         try {
-            const response = await axios.post('http://localhost/api/queries', data);
+            const response = await axios.post('http://localhost/api/queries', data, {
+                headers: {
+                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json'
+                }
+            });
 
             if (response.status === 200) {
                 console.log('Data sent successfully');
